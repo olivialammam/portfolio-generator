@@ -20,13 +20,16 @@ const writeFile = fileContent => {
 };
 
 const copyFile = () => {
-return new Promise((resolve, reject) => {
+    return new Promise(() => {
 // File destination.txt will be created or overwritten by default.
-fs.copyFile('source.txt', 'destination.txt', (err) => {
-    if (err) throw err;
-    console.log('source.txt was copied to destination.txt');
-  });
+    fs.copyFile('./src/style.css', './dist/style.css', err => {
+      if (err) {
+        console.log(err);
+        return;
+      }
+       console.log('Style sheet copied successfully!');
+     });
 
 })}
 
-export default "Test"; 
+module.exports = { writeFile, copyFile };
